@@ -1,9 +1,11 @@
 import 'package:feasto_admin/configs/components/bouncing_button_widget.dart';
 import 'package:feasto_admin/configs/constants/app_image.dart';
+import 'package:feasto_admin/configs/constants/app_svg.dart';
 import 'package:feasto_admin/configs/extensions/mediaquery_extensions.dart';
 import 'package:feasto_admin/configs/themes/colors.dart';
 import 'package:feasto_admin/features/home/view/widgets/desktop/home_user_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeLeftPanel extends StatelessWidget {
   const HomeLeftPanel({
@@ -57,17 +59,29 @@ class HomeLeftPanel extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(13),
                                 color: colorScheme.surface.withOpacity(.2)),
-                            child: Row(
-                              children: [
-                                homePanelItems.elementAt(index).icon == "icon"
-                                    ? Icon(Icons.dashboard_rounded)
-                                    : SizedBox(),
-                                Text(
-                                  homePanelItems.elementAt(index).text,
-                                  style: textTheme.bodyLarge?.copyWith(
-                                      color: AppColors.white.withOpacity(.7)),
-                                )
-                              ],
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: scrWidth * 0.01),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    height: scrHeight * 0.026,
+                                    width: scrHeight * 0.026,
+                                    child: SvgPicture.asset(
+                                      homePanelItems.elementAt(index).icon,
+                                      colorFilter: ColorFilter.mode(
+                                          AppColors.white.withOpacity(.7),
+                                          BlendMode.srcIn),
+                                    ),
+                                  ),
+                                  (scrWidth * 0.008).width,
+                                  Text(
+                                    homePanelItems.elementAt(index).text,
+                                    style: textTheme.bodyLarge?.copyWith(
+                                        color: AppColors.white.withOpacity(.7)),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -92,11 +106,11 @@ class HomePanelItems {
 }
 
 List<HomePanelItems> homePanelItems = [
-  HomePanelItems("dashboard01", "icon", "Dashboard"),
-  HomePanelItems("resturant01", "", "Resturant"),
-  HomePanelItems("payment01", "", "Foods"),
-  HomePanelItems("payment01", "", "Categories"),
-  HomePanelItems("order01", "", "Order"),
-  HomePanelItems("food01", "", "Payments"),
-  HomePanelItems("payment01", "", "Users"),
+  HomePanelItems("dashboard01", AppSvg.homeDashBoard, "Dashboard"),
+  HomePanelItems("resturant01", AppSvg.homeResturant, "Resturant"),
+  HomePanelItems("payment01", AppSvg.homeFoodIcon, "Foods"),
+  HomePanelItems("payment01", AppSvg.homeCategory, "Categories"),
+  HomePanelItems("order01", AppSvg.homeOrder, "Order"),
+  HomePanelItems("food01", AppSvg.homePayment, "Payments"),
+  HomePanelItems("payment01", AppSvg.homeUser, "Users"),
 ];

@@ -16,11 +16,7 @@ class SplashState extends StatefulWidget {
 class _SplashStateState extends State<SplashState> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 1), () {
-      if (mounted) {
-        OnboardViewModel().checkAuthentication(context);
-      }
-    });
+    OnboardViewModel().checkAuthentication(context);
     super.initState();
   }
 

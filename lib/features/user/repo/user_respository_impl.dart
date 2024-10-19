@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:feasto_admin/configs/app_urls.dart';
 import 'package:feasto_admin/data/network/app_exception.dart';
 import 'package:feasto_admin/data/network/base_network_api_services.dart';
+import 'package:feasto_admin/features/user/model/get_users/get_users_model.dart';
 import 'package:feasto_admin/features/user/model/user_model.dart';
 import 'package:feasto_admin/features/user/repo/user_repository.dart';
 
@@ -16,6 +17,21 @@ class UserRepositoryImpl implements UserRepository {
     try {
       final response = await _apiService.get(AppUrls.user);
       final result = UserModel.fromJson(response);
+      return result.data;
+    } on DioException catch (e) {
+      final error = DioExceptions.fromDioException(e);
+      final exceptionMessage = e.response?.data["error"];
+      throw exceptionMessage ?? error.errorMessage;
+    }
+  }
+
+  @override
+  Future<List<GetUsersData>?> getUsers({required String user}) async {
+    try {
+      final Map<String, dynamic> queryParameter = {"user": user};
+      final response = await _apiService.get(AppUrls.getUser,
+          queryParameters: queryParameter);
+      final result = GetUsersModel.fromJson(response);
       return result.data;
     } on DioException catch (e) {
       final error = DioExceptions.fromDioException(e);

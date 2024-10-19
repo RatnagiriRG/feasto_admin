@@ -10,4 +10,5 @@ class AppUrls {
 
   //user
   static const user = "$_admin/getadmin";
+  static const getUser = "$_admin/getUser";
 }
