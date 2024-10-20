@@ -24,7 +24,7 @@ class HomeUserWidgets extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: scrHeight * 0.012, vertical: scrHeight * 0.012),
         child: Selector<UserViewModel, ApiResponse<UserData?>?>(
-          selector: (p0, p1) => p1.appResponse,
+          selector: (p0, p1) => p1.apiResponse,
           builder: (context, value, child) {
             switch (value?.status) {
               case Status.completed:

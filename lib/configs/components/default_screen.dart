@@ -7,9 +7,9 @@ class DefaultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme colorScheme = context.colorScheme;
+    ColorScheme _colorScheme = context.colorScheme;
     return Scaffold(
-      backgroundColor: colorScheme.surface,
+      backgroundColor: _colorScheme.surface,
     );
   }
 }

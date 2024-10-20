@@ -3,34 +3,34 @@ import 'package:feasto_admin/data/response/status.dart';
 import 'package:flutter/material.dart';
 
 mixin ApiStateHandleMixin<T> on ChangeNotifier {
-  ApiResponse<T>? _appResponse;
+  ApiResponse<T>? _apiResponse;
 
-  set setAppResponse(ApiResponse<T>? appResponse) {
-    _appResponse = appResponse;
-    if (appResponse == null) return;
+  set setApiResponse(ApiResponse<T>? apiResponse) {
+    _apiResponse = apiResponse;
+    if (apiResponse == null) return;
     notifyListeners();
   }
 
-  ApiResponse<T>? get appResponse => _appResponse;
+  ApiResponse<T>? get apiResponse => _apiResponse;
 
   // Api respose state with out data and message
-  Status? _appLoadingStatus;
+  Status? _apiLoadingStatus;
 
-  set setAppStatusLoading(Status? status) {
-    _appLoadingStatus = status;
+  set setApiStatusLoading(Status? status) {
+    _apiLoadingStatus = status;
     if (status == null) return;
     notifyListeners();
   }
 
-  Status? get appLoadingStatus => _appLoadingStatus;
+  Status? get apiLoadingStatus => _apiLoadingStatus;
 
-  Status? _appLoadingStatus1;
+  Status? _apiLoadingStatus1;
 
-  set setAppStatusLoading1(Status? status) {
-    _appLoadingStatus1 = status;
+  set setApiStatusLoading1(Status? status) {
+    _apiLoadingStatus1 = status;
     if (status == null) return;
     notifyListeners();
   }
 
-  Status? get appLoadingStatus1 => _appLoadingStatus1;
+  Status? get apiLoadingStatus1 => _apiLoadingStatus1;
 }
